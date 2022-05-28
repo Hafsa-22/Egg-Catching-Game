@@ -1,7 +1,6 @@
 /***
         Egg Catching Game
         ________________________________________________________________________
-
         This is a simple graphical game.
         The objective of the game is to catch falling eggs in the basket.
 ***/
@@ -19,6 +18,7 @@ using namespace std;
 
 
 int egg_xc, egg_yc;  // for coordinates of egg
+int bird_xc, bird_yc;
 int basket_x, basket_y;  // for coordinates of basket
 int a=600,b=650; // for default size of the screen
 int s=0;
@@ -69,7 +69,7 @@ void sun()
 
     GLfloat angle;
     glLineWidth(1.5);
-    glColor3f(0,1,0);
+    glColor3f(1,1,0);
     glBegin(GL_POLYGON);
 
     for (int i = 0; i <360 ; i++)
@@ -180,7 +180,7 @@ void cloud2()
 
 void backk(int i, int j)
 {
-    glColor3f(0, .5, 1);
+    glColor3f(1, 0, 1);
     glBegin(GL_QUADS);
     glVertex2f(0.0+i,0.0+j);
     glVertex2f(600.0+i, 0.0+j);
@@ -220,16 +220,17 @@ void egg()
 }
 
 
+
 void basket(int i,int j)
 {
     j=10;
     if(i>=a-60)i=a-60;
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_QUADS);
-    glVertex2f(0.0+i,30.0+j);
+    glVertex2f(0.0+i,40.0+j);
     glVertex2f(10.0+i,10.0+j);
     glVertex2f(50.0+i,10.0+j);
-    glVertex2f(60.0+i,30.0+j);
+    glVertex2f(60.0+i,40.0+j);
     glEnd();
 }
 
@@ -282,6 +283,7 @@ void bird(int i,int j)
     glVertex2f(67.5+i,112.5+j);
     glVertex2f(72.5+i,110+j);
     glVertex2f(77.5+i,112.5+j);
+
     glEnd();
     glFlush();
 }
@@ -302,7 +304,7 @@ void egg_start()
 {
     dropped_eggs++;
 
-    if(missed_eggs>=10)
+    if(missed_eggs>=2)
     {
         cout << endl << endl << "\t\t\t\tGAME OVER" << endl << endl;
         print_score();
@@ -372,6 +374,8 @@ void level_and_speed_controller()
     char level4[12]="LEVEL 4";
     char level5[12]="LEVEL 5";
     char level6[12]="LEVEL 6";
+
+
 
     if(s>=1)
     {
@@ -470,6 +474,7 @@ void display(void)
     glClear(GL_COLOR_BUFFER_BIT);
     ground(0, 650);
     backk(0, 650);
+
     bird(40,375);
     bird(180,375);
     bird(320,375);
@@ -477,6 +482,7 @@ void display(void)
     cloud1();
     cloud2();
     level_and_speed_controller();
+
 }
 
 
@@ -545,7 +551,7 @@ void prompt()
 {
     cout << endl << endl;
     cout << " ---------------------------------------------------------------------------------" << endl;
-    cout << "\t\t\t\t Catch Falling Eggs" << endl;
+    cout << "\t\t\t\t Egg Catching Game"<< endl;
     cout << " ---------------------------------------------------------------------------------" << endl;
     cout << endl << endl;
 
@@ -592,4 +598,3 @@ int main(int argc,char **argv)
     glutReshapeFunc(myReshape);
     glutMainLoop();
 }
-
