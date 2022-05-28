@@ -1,5 +1,5 @@
 /***
-        Catch Falling Eggs
+        Egg Catching Game
         ________________________________________________________________________
 
         This is a simple graphical game.
@@ -365,7 +365,7 @@ void set_basket(int a,int b)
 void level_and_speed_controller()
 {
     int i;
-    char z[12]="FORHAD";
+    char z[12]="HAFSA";
     char level1[12]="LEVEL 1";
     char level2[12]="LEVEL 2";
     char level3[12]="LEVEL 3";
@@ -577,7 +577,7 @@ int main(int argc,char **argv)
     glutInit(&argc,argv);
     glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB);
     glutInitWindowSize(a,b);
-    glutCreateWindow("Catch Falling Eggs");
+    glutCreateWindow("Egg Catching Game");
     myinit();
     glutInitWindowPosition (100, 100);
     glutCreateMenu(menu);
